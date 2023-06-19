@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Pipes.gd" type="Script" id=1]
+[ext_resource path="res://Box.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4, 40 )
+
+[node name="PipeNode" type="Node2D"]
+position = Vector2( 248, 104 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Pipes" type="StaticBody2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="UpPipeSprite" type="Sprite" parent="Pipes"]
+position = Vector2( 0, -200 )
+scale = Vector2( 2, 20 )
+texture = ExtResource( 2 )
+
+[node name="UpPipeColl" type="CollisionShape2D" parent="Pipes"]
+position = Vector2( 0, -200 )
+scale = Vector2( 2, 20 )
+shape = SubResource( 1 )
+
+[node name="DownPipeSprite" type="Sprite" parent="Pipes"]
+position = Vector2( 0, 200 )
+scale = Vector2( 2, 20 )
+texture = ExtResource( 2 )
+
+[node name="DownPipeColl" type="CollisionShape2D" parent="Pipes"]
+position = Vector2( 0, 200 )
+scale = Vector2( 2, 20 )
+shape = SubResource( 1 )
+
+[node name="ScoreZone" type="Area2D" parent="Pipes"]
+position = Vector2( 12, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipes/ScoreZone"]
+shape = SubResource( 2 )
